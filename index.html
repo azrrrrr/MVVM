@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MVVM-dome</title>
+</head>
+<body>
+  <div id="app">
+    <p>hi</p>
+    <p>msg的内容是{{msg}}</p>
+    <p v-text="msg" title="1"></p>
+
+    <p>{{car.brand}}</p>
+
+    
+    <p v-html="tag" title="2"></p>
+    <input type="text" v-model="msg">
+    <button v-on:click="clickFn">Button</button>
+  </div>
+  <script src="./src/vue.js"></script>
+  <script src="./src/compile.js"></script>
+  <script src="./src/observe.js"></script>
+  <script src="./src/watcher.js"></script>
+  <script>
+    // const vm1 = new Vue()
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        tag: '<h3>tag<h3>',
+        car: {
+          brand: '宝马',
+          color: 'red'
+        }
+      },
+      methods:{
+        clickFn(){
+          console.log("this", this)
+          console.log("click", this.$data.msg)
+        }
+      }
+    })
+    // console.log(vm)
+    // console.log(vm.$data['msg'])
+    // console.log(vm.$data['car.color'])
+  </script>
+</body>
+</html>
